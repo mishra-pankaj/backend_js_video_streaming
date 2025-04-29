@@ -9,7 +9,20 @@ dotenv.config({
 
 
 connectDB()
-
+.then(()=>{
+    app.listen(process.env.PORT || 8000,() =>{
+        console.log(`SEVER IS RUNNING AT PORT:${process.env.PORT}`);
+        
+    })
+})
+app.on("error",(error)=>{
+    console.log("error:",error);
+    process.exit(1)
+    
+})
+.catch((err) =>{
+    console.log("MONGODB CONNECTION FAILED!!!",err)
+})
 
 
 
